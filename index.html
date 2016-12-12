@@ -28,55 +28,55 @@
       else
       {
         var storage=sessionStorage;
-      }
-      function setsessionStorage()
-      {
-        var key=document.getElementById("textkey").value;
-        var value=document.getElementById("textdata").value:
-        
-        if(key&&value)
+        function setsessionStorage()
         {
-          storage.setItem(key,value);
+          var key=document.getElementById("textkey").value;
+          var value=document.getElementById("textdata").value;
+        
+          if(key&&value)
+          {
+            storage.setItem(key,value);
+          }
+        
+          key="";
+          value="";
+        
+          viewStorage();
         }
-        
-        key="";
-        value="";
-        
-        viewStorage();
-      }
       
-      function viewStorage()
-      {
-        var list=document.getElementById("list")
-        while(list.firstChild) list.removeChild(list.firstChild);
-        
-        for(var i=0;i<storage.length;i++)
+        function viewStorage()
         {
-          var _key=storage.key(i);
+          var list=document.getElementById("list")
+          while(list.firstChild) list.removeChild(list.firstChild);
+        
+          for(var i=0;i<storage.length;i++)
+          {
+            var _key=storage.key(i);
           
-          var tr=document.createElement("tr");
-          var td1=document.createElement("td");
-          var td2=document.createElement("td");
-          list.appendChild(tr);
-          tr.appendChild(td1);
-          tr.appendChild(td2);
-          td1.innerHTML=_key;
-          td2.innnerHTML=storage.getItem(_key);
+            var tr=document.createElement("tr");
+            var td1=document.createElement("td");
+            var td2=document.createElement("td");
+            list.appendChild(tr);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            td1.innerHTML=_key;
+            td2.innnerHTML=storage.getItem(_key);
+          }
         }
-      }
       
-      function removeStorage()
-      {
-        var key=document.getElementById("textkey").value;
-        storage.removeItem(key);
-        key="";
-        viewStorage();
-      }
+        function removeStorage()
+        {
+          var key=document.getElementById("textkey").value;
+          storage.removeItem(key);
+          key="";
+          viewStorage();
+        }
       
-      function removeallStorage()
-      {
-        storage.clear();
-        viewStorage();
+        function removeallStorage()
+        {
+          storage.clear();
+          viewStorage();
+        }
       }
   </body>
 </html>
